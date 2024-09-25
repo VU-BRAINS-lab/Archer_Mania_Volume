@@ -1,0 +1,471 @@
+Mplus VERSION 8.8 (Mac)
+MUTHEN & MUTHEN
+02/18/2024   7:51 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Volume and Mania;
+
+
+  DATA:  FILE is mania.data.dat;
+
+  VARIABLE: NAMES ARE
+
+  subnum_char_b age_b FEMALE_b np_ps_weight FAMID_b siten_b
+  NHWHITE_b AFRICAN_b HISPANIC_b OTHER_b TICV_b
+  COIL2_b COIL3_b COIL4_b COIL5_b income_b parent_education_b
+  medication_b fsqc_qu_motion_b
+  vol_1 vol_35 vol_2 vol_36 vol_3 vol_37 vol_4 vol_38 vol_5
+  vol_39 vol_31 vol_65 vol_6 vol_40 vol_7 vol_41 vol_8 vol_42
+  vol_9 vol_43 vol_34 vol_68 vol_12 vol_46 vol_11 vol_45 vol_10
+  vol_44 vol_14 vol_48 vol_13 vol_47 vol_16 vol_50 vol_15 vol_49
+  vol_18 vol_52 vol_17 vol_51 vol_19 vol_53 vol_24 vol_58 vol_20
+  vol_54 vol_21 vol_55 vol_23 vol_57 vol_22 vol_56 vol_25 vol_59
+  vol_26 vol_60 vol_30 vol_64 vol_27 vol_61 vol_28 vol_62 vol_29
+  vol_63 vol_32 vol_66 vol_33 vol_67 vol_124 vol_138 vol_121 vol_136
+  vol_119 vol_114 vol_132 vol_112 vol_130 vol_120 vol_135 vol_116 vol_134
+  vol_115 vol_133 vol_113 vol_131 vol_125 vol_139 pgbi_p_ss_score_b
+  pgbi_p_ss_score_2;
+
+      USEVARIABLES ARE
+      pgbi_p_ss_score_b pgbi_p_ss_score_2
+      vol_1 age_b FEMALE_b TICV_b
+      COIL2_b COIL3_b COIL4_b COIL5_b parent_education_b
+      medication_b;
+
+      MISSING ARE .;
+        WEIGHT = np_ps_weight;
+        STRATIFICATION=siten_b;
+        IDVARIABLE = subnum_char_b;
+        CLUSTER=FAMID_b;
+
+        DEFINE: STANDARDIZE
+        vol_1 TICV_b;
+
+        ANALYSIS:
+        ESTIMATOR=WLSMV;
+        ITERATIONS=500000;
+        TYPE = COMPLEX;
+
+      MODEL:
+
+     pgbi_p_ss_score_2 ON vol_1
+  age_b
+  FEMALE_b
+  COIL2_b
+  COIL3_b
+  COIL4_b
+  COIL5_b
+  parent_education_b
+  medication_b
+  pgbi_p_ss_score_b;
+
+  OUTPUT: SAMPSTAT STDYX;
+
+
+
+*** WARNING in ANALYSIS command
+  Estimator WLSMV is not available for analysis with all continuous variables.
+  Default estimator will be used.
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING in MODEL command
+  Variable is uncorrelated with all other variables:  TICV_B
+*** WARNING in MODEL command
+  At least one variable is uncorrelated with all other variables in the model.
+  Check that this is what is intended.
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains unknown or missing values for GROUPING,
+  PATTERN, COHORT, CLUSTER and/or STRATIFICATION variables.
+  Number of cases with unknown or missing values:  64
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  92
+   7 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Volume and Mania;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       10662
+
+Number of dependent variables                                    2
+Number of independent variables                                 10
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   PGBI_P_SS_  TICV_B
+
+Observed independent variables
+   PGBI_P_S    VOL_1       AGE_B       FEMALE_B    COIL2_B     COIL3_B
+   COIL4_B     COIL5_B     PARENT_E    MEDICATI
+
+Variables with special functions
+
+  Stratification        SITEN_B
+  Cluster variable      FAMID_B
+  Weight variable       NP_PS_WE
+  ID variable           SUBNUM_C
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                500000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  mania.data.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             2
+     Number of strata                           22
+     Number of clusters                       8980
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              PGBI_P_S      TICV_B        PGBI_P_S      VOL_1         AGE_B
+              ________      ________      ________      ________      ________
+ PGBI_P_S       0.920
+ TICV_B         0.920         1.000
+ PGBI_P_S       0.920         1.000         1.000
+ VOL_1          0.920         1.000         1.000         1.000
+ AGE_B          0.920         1.000         1.000         1.000         1.000
+ FEMALE_B       0.920         1.000         1.000         1.000         1.000
+ COIL2_B        0.920         1.000         1.000         1.000         1.000
+ COIL3_B        0.920         1.000         1.000         1.000         1.000
+ COIL4_B        0.920         1.000         1.000         1.000         1.000
+ COIL5_B        0.920         1.000         1.000         1.000         1.000
+ PARENT_E       0.920         1.000         1.000         1.000         1.000
+ MEDICATI       0.920         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              FEMALE_B      COIL2_B       COIL3_B       COIL4_B       COIL5_B
+              ________      ________      ________      ________      ________
+ FEMALE_B       1.000
+ COIL2_B        1.000         1.000
+ COIL3_B        1.000         1.000         1.000
+ COIL4_B        1.000         1.000         1.000         1.000
+ COIL5_B        1.000         1.000         1.000         1.000         1.000
+ PARENT_E       1.000         1.000         1.000         1.000         1.000
+ MEDICATI       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              PARENT_E      MEDICATI
+              ________      ________
+ PARENT_E       1.000
+ MEDICATI       1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              PGBI_P_S      TICV_B        PGBI_P_S      VOL_1         AGE_B
+              ________      ________      ________      ________      ________
+                1.268         0.000         1.433         0.000       119.386
+
+
+           Means
+              FEMALE_B      COIL2_B       COIL3_B       COIL4_B       COIL5_B
+              ________      ________      ________      ________      ________
+                0.502         0.242         0.052         0.296         0.333
+
+
+           Means
+              PARENT_E      MEDICATI
+              ________      ________
+               14.716         1.640
+
+
+           Covariances
+              PGBI_P_S      TICV_B        PGBI_P_S      VOL_1         AGE_B
+              ________      ________      ________      ________      ________
+ PGBI_P_S       7.758
+ TICV_B        -0.192         1.000
+ PGBI_P_S       4.378        -0.192         8.625
+ VOL_1         -0.110         0.401        -0.093         1.000
+ AGE_B         -0.196         0.514        -0.558        -0.281        56.508
+ FEMALE_B      -0.018        -0.224        -0.078        -0.111        -0.100
+ COIL2_B        0.018        -0.135        -0.014         0.032        -0.159
+ COIL3_B       -0.031        -0.017        -0.036        -0.016         0.093
+ COIL4_B        0.054         0.080         0.083        -0.004         0.035
+ COIL5_B       -0.011         0.082         0.005        -0.004         0.092
+ PARENT_E      -1.137         0.465        -1.269         0.276         0.287
+ MEDICATI      -0.312        -0.053        -0.335        -0.037        -0.141
+
+
+           Covariances
+              FEMALE_B      COIL2_B       COIL3_B       COIL4_B       COIL5_B
+              ________      ________      ________      ________      ________
+ FEMALE_B       0.250
+ COIL2_B        0.004         0.183
+ COIL3_B        0.001        -0.013         0.049
+ COIL4_B       -0.006        -0.072        -0.015         0.208
+ COIL5_B       -0.001        -0.081        -0.017        -0.099         0.222
+ PARENT_E      -0.002        -0.039         0.013        -0.047         0.051
+ MEDICATI       0.032        -0.017         0.004        -0.022         0.013
+
+
+           Covariances
+              PARENT_E      MEDICATI
+              ________      ________
+ PARENT_E       7.534
+ MEDICATI      -0.316         2.180
+
+
+           Correlations
+              PGBI_P_S      TICV_B        PGBI_P_S      VOL_1         AGE_B
+              ________      ________      ________      ________      ________
+ PGBI_P_S       1.000
+ TICV_B        -0.069         1.000
+ PGBI_P_S       0.535        -0.065         1.000
+ VOL_1         -0.039         0.401        -0.032         1.000
+ AGE_B         -0.009         0.068        -0.025        -0.037         1.000
+ FEMALE_B      -0.013        -0.449        -0.053        -0.222        -0.027
+ COIL2_B        0.015        -0.314        -0.011         0.075        -0.049
+ COIL3_B       -0.050        -0.079        -0.055        -0.074         0.056
+ COIL4_B        0.043         0.175         0.062        -0.008         0.010
+ COIL5_B       -0.008         0.175         0.003        -0.009         0.026
+ PARENT_E      -0.149         0.169        -0.157         0.101         0.014
+ MEDICATI      -0.076        -0.036        -0.077        -0.025        -0.013
+
+
+           Correlations
+              FEMALE_B      COIL2_B       COIL3_B       COIL4_B       COIL5_B
+              ________      ________      ________      ________      ________
+ FEMALE_B       1.000
+ COIL2_B        0.021         1.000
+ COIL3_B        0.011        -0.132         1.000
+ COIL4_B       -0.024        -0.366        -0.152         1.000
+ COIL5_B       -0.002        -0.399        -0.165        -0.458         1.000
+ PARENT_E      -0.001        -0.034         0.021        -0.037         0.039
+ MEDICATI       0.043        -0.027         0.013        -0.033         0.019
+
+
+           Correlations
+              PARENT_E      MEDICATI
+              ________      ________
+ PARENT_E       1.000
+ MEDICATI      -0.078         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -175767.420
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     PGBI_P_SS_SCORE       1.235       3.690       0.000   68.11%       0.000      0.000      0.000
+            9810.000       7.651      18.145      30.000    0.03%       0.000      2.000
+     TICV_B                0.000       0.153      -3.421    0.01%      -0.807     -0.239      0.014
+           10662.000       1.000       0.016       4.192    0.01%       0.273      0.892
+     PGBI_P_SS_SCORE       1.433       3.270       0.000   63.75%       0.000      0.000      0.000
+           10662.000       8.625      13.519      28.000    0.01%       0.000      2.000
+     VOL_1                 0.000       0.615      -3.244    0.01%      -0.837     -0.324     -0.087
+           10662.000       1.000       0.743       5.706    0.01%       0.165      0.800
+     AGE_B               119.386      -0.028     107.000    1.13%     111.000    116.000    119.000
+           10662.000      56.508      -1.275     133.000    0.01%     122.000    127.000
+     FEMALE_B              0.502      -0.009       0.000   51.53%       0.000      0.000      0.000
+           10662.000       0.250      -2.000       1.000   48.47%       1.000      1.000
+     COIL2_B               0.242       1.205       0.000   76.43%       0.000      0.000      0.000
+           10662.000       0.183      -0.547       1.000   23.57%       0.000      1.000
+     COIL3_B               0.052       4.039       0.000   95.64%       0.000      0.000      0.000
+           10662.000       0.049      14.315       1.000    4.36%       0.000      0.000
+     COIL4_B               0.296       0.894       0.000   72.85%       0.000      0.000      0.000
+           10662.000       0.208      -1.200       1.000   27.15%       0.000      1.000
+     COIL5_B               0.333       0.707       0.000   63.37%       0.000      0.000      0.000
+           10662.000       0.222      -1.500       1.000   36.63%       0.000      1.000
+     PARENT_EDUCATIO      14.716      -0.302       1.000    0.02%      13.000     14.000     16.000
+           10662.000       7.534       0.560      20.000    6.08%      16.000     18.000
+     MEDICATION_B          1.640      -0.167       0.000   43.65%       0.000      0.000      3.000
+           10662.000       2.180      -1.935       4.000    0.26%       3.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       14
+
+Loglikelihood
+
+          H0 Value                      -37250.768
+          H0 Scaling Correction Factor      2.9338
+            for MLR
+          H1 Value                      -34079.851
+          H1 Scaling Correction Factor      2.2680
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   74529.536
+          Bayesian (BIC)                 74631.378
+          Sample-Size Adjusted BIC       74586.888
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                           4464.257*
+          Degrees of Freedom                    11
+          P-Value                           0.0000
+          Scaling Correction Factor         1.4206
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.195
+          90 Percent C.I.                    0.190  0.200
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.193
+          TLI                                0.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           5537.747
+          Degrees of Freedom                    21
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.151
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PGBI_P_S ON
+    VOL_1             -0.047      0.028     -1.666      0.096
+    AGE_B              0.002      0.004      0.516      0.606
+    FEMALE_B           0.072      0.059      1.213      0.225
+    COIL2_B            0.205      0.091      2.243      0.025
+    COIL3_B           -0.141      0.126     -1.117      0.264
+    COIL4_B            0.145      0.092      1.570      0.116
+    COIL5_B            0.088      0.083      1.051      0.293
+    PARENT_EDU        -0.068      0.012     -5.716      0.000
+    MEDICATION        -0.076      0.019     -3.956      0.000
+    PGBI_P_SS_         0.493      0.022     22.066      0.000
+
+ Means
+    TICV_B             0.000      0.011      0.000      1.000
+
+ Intercepts
+    PGBI_P_SS_         1.294      0.523      2.474      0.013
+
+ Variances
+    TICV_B             1.000      0.016     62.028      0.000
+
+ Residual Variances
+    PGBI_P_SS_         5.479      0.325     16.849      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.226E-06
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PGBI_P_S ON
+    VOL_1             -0.017      0.010     -1.663      0.096
+    AGE_B              0.005      0.011      0.517      0.605
+    FEMALE_B           0.013      0.011      1.221      0.222
+    COIL2_B            0.031      0.014      2.245      0.025
+    COIL3_B           -0.011      0.010     -1.113      0.266
+    COIL4_B            0.024      0.015      1.578      0.115
+    COIL5_B            0.015      0.014      1.052      0.293
+    PARENT_EDU        -0.067      0.011     -5.939      0.000
+    MEDICATION        -0.040      0.010     -3.996      0.000
+    PGBI_P_SS_         0.520      0.021     25.020      0.000
+
+ Means
+    TICV_B             0.000      0.011      0.000      1.000
+
+ Intercepts
+    PGBI_P_SS_         0.465      0.188      2.475      0.013
+
+ Variances
+    TICV_B             1.000      0.000    999.000    999.000
+
+ Residual Variances
+    PGBI_P_SS_         0.706      0.021     33.580      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    PGBI_P_S           0.294      0.021     13.967      0.000
+
+
+     Beginning Time:  19:51:37
+        Ending Time:  19:51:38
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2022 Muthen & Muthen
